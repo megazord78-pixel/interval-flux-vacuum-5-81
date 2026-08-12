@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "title": "All-orders interval certificate for the six-field closed flux subsystem",
+  "claim_status": "publication_ready_six_field_local_theorem",
+  "manifold": {
+    "dataset_id": "5-81-3213",
+    "h21": 5,
+    "h11": 81
+  },
+  "scope": {
+    "complex_fields": 6,
+    "real_dimension": 12,
+    "implemented_truncated_instanton_terms": 4,
+    "includes_complete_closed_gkz_tail": true,
+    "local_uniqueness_only": true,
+    "global_uniqueness": false,
+    "full_113_field_root": false,
+    "physical_vacuum": false
+  },
+  "center": [
+    "-12.0",
+    "-19.5",
+    "-29.5",
+    "-15.0",
+    "-15.0",
+    "-5.0",
+    "19.8199149385156443333387499081493026427132695332059251094111917048944",
+    "32.20736177508792204167556806070343253749395852449748666020339850646262",
+    "48.7239575571842923194581836098975891559134894847285803787266747869084",
+    "24.77489367314455541667404770688551111698537224244468151525216347448993",
+    "24.77489367314455541667363128782590190832957159186360318139070004981575",
+    "8.258297891048185138891349002637980080282291697496781635597611516686207"
+  ],
+  "truncated_krawczyk": {
+    "box_radius": "1e-30",
+    "maximum_center_residual_upper": "5.99e-40",
+    "maximum_center_displacement_upper": "1.18e-35",
+    "maximum_remainder_row_sum_upper": "1.33e-6",
+    "declared_available_margin_lower": "9.9998e-31",
+    "strict_components": 12
+  },
+  "all_orders_tail": {
+    "coverage": "degrees absent from the 557-row source table plus high transverse totals",
+    "exact_low_nonzero_chow_charges": 188,
+    "minimum_uncovered_action": "33.03319156419274094",
+    "period_second_log_derivative_upper": "1.742742353795199243e-77",
+    "maximum_fterm_component_upper": "8.542735885145368579E-77",
+    "real_jacobian_infinity_norm_upper": "2.809602550413286746E-73",
+    "propagation_attachment": {
+      "path": "data/recentered_tail_propagation.json",
+      "sha256": "e70885092f162995b4457484b88b51322c5964d02f5b64ba2ed9beb71bb4ce21"
+    },
+    "componentwise_tail_additions_source": "recomputed exactly from the propagation attachment"
+  },
+  "finite_source_sector": {
+    "published_degrees": 557,
+    "registry_sha256": "8d41f0254448d220c2b6ad94cbb4ddf5b8d6f1c8833aa110bb7c12f0115c37fc",
+    "baseline_terms": 4,
+    "pointwise_comparison_only": false,
+    "maximum_pointwise_second_derivative_difference": "3.10030589659617839099993e-39",
+    "rigorous_box_jet_bound_attached": true,
+    "recentered_full_finite_sector_root_interval_certified": true,
+    "maximum_old_to_new_center_shift_upper": "3e-20",
+    "infinite_tail_log_domain_radius_lower": "0.1",
+    "infinite_tail_domain_contains_recentered_box": true,
+    "box_jet_bounds": {
+      "value_upper": {"numerator": 2799437019, "denominator": 40564819207303340847894502572032},
+      "gradient_infinity_upper": {"numerator": 31423200267, "denominator": 10384593717069655257060992658440192},
+      "hessian_infinity_upper": {"numerator": 398422151154742641189885899709421, "denominator": 6277101735386680763835789423207666416102355444464034512896}
+    },
+    "recentered_krawczyk": {
+      "box_radius": "1e-30",
+      "maximum_center_displacement_upper": {"numerator": 260867169908352215394944626624811, "denominator": 69992023193056381579920071267763883691301421788582797965624659405118495974380029543152421664737722368},
+      "maximum_remainder_row_sum_upper": {"numerator": 4533689814053128837413628836983825073082036929537, "denominator": 5986310706507378352962293074805895248510699696029696},
+      "declared_available_margin_lower": {"numerator": 88658234637949151907379038070341087749311824478698625286675879383611959697720075772151240646249211715, "denominator": 88725430211866075506509253892578678509965986412026130405455346579667881849780019937279180995332466499116518750764914298527173050368}
+    },
+    "finite_krawczyk_artifact_sha256": "a99d2f5038ec3f7c3631fcf8a95999a324d01b7ba58dc6006d8f0f8b94c749d5"
+    ,"finite_krawczyk_attachment": {
+      "path": "data/full_finite_krawczyk.json",
+      "sha256": "a99d2f5038ec3f7c3631fcf8a95999a324d01b7ba58dc6006d8f0f8b94c749d5"
+    }
+  },
+  "degree_coverage": {
+    "low_total_maximum": 8,
+    "representation_count": 8150,
+    "category_counts": {
+      "chow_zero": 7150,
+      "source_table": 527,
+      "displayed_multicover": 21,
+      "uncovered": 452
+    },
+    "category_count_sum": 8150,
+    "explicit_disjoint_membership_lists_attached": true,
+    "partition_sha256": "be15109aff9ef61300c3202dd51f992c0113b70d36512e2e9a991992a849c9bc",
+    "partition_attachment": {
+      "path": "data/finite_sector_coverage.json",
+      "sha256": "004afc95bde6217ba04ccafa172f830bfe57f00277830d39b5b100abdc0186ff"
+    },
+    "high_totals_begin_at": 9,
+    "high_total_action_lower": "66.89221291749029774"
+  },
+  "supporting_geometry": {
+    "five_rigid_curves": [
+      {"source_row": 2, "divisor_pair": [15, 24], "match_count_among_divisor_pairs": 1, "primitive_multiplicity": 1, "face_genus": 0, "normal_bundle_degrees": [-1, -1], "primitive_binomial_restriction": true, "persists_in_all_orders_log_box": true},
+      {"source_row": 31, "divisor_pair": [13, 84], "match_count_among_divisor_pairs": 1, "primitive_multiplicity": 1, "face_genus": 0, "normal_bundle_degrees": [-1, -1], "primitive_binomial_restriction": true, "persists_in_all_orders_log_box": true},
+      {"source_row": 27, "divisor_pair": [9, 81], "match_count_among_divisor_pairs": 1, "primitive_multiplicity": 1, "face_genus": 0, "normal_bundle_degrees": [-1, -1], "primitive_binomial_restriction": true, "persists_in_all_orders_log_box": true},
+      {"source_row": 45, "divisor_pair": [10, 80], "match_count_among_divisor_pairs": 1, "primitive_multiplicity": 1, "face_genus": 0, "normal_bundle_degrees": [-1, -1], "primitive_binomial_restriction": true, "persists_in_all_orders_log_box": true},
+      {"source_row": 44, "divisor_pair": [13, 82], "match_count_among_divisor_pairs": 1, "primitive_multiplicity": 1, "face_genus": 0, "normal_bundle_degrees": [-1, -1], "primitive_binomial_restriction": true, "persists_in_all_orders_log_box": true}
+    ],
+    "exhausts_all_effective_curves": false,
+    "complete_intersection_pair_records_outside_potent_span": 54,
+    "unresolved_high_volume_complete_intersection_classes": 16,
+    "mixed_gv_vanishing_all_orders": false
+  },
+  "provenance": [
+    {"path": "results/2026-08-12_string_5_81_flux_root_krawczyk.json", "sha256": "0a9f3923af394be198864a2d61e2f7b46849b128e8c6d4328e8b93a1e7aa8802"},
+    {"path": "results/2026-08-12_string_5_81_gkz_exact_low_allorders_flux_certificate.json", "sha256": "f83087b43169e393419fd2906bd3b8287c637cd35976be3c4b137ddc386b2473"},
+    {"path": "results/2026-08-12_string_5_81_complete_intersection_curve_match.json", "sha256": "1fd2cb4149bf0a4982c9427334226bd8742d2436fc9ddc584d3614b489a974a2"},
+    {"path": "results/2026-08-12_string_5_81_complete_intersection_decomposition.json", "sha256": "e93db72f7b471eb7242e1596fea8965629446a058ddc99aa3cdbb869c7843100"},
+    {"path": "models/string_5_81_gkz_exact_low_allorders_flux_certificate.py", "sha256": "257b6ce8cbdb70a22bb184d4ea077e5f560849fc8039ad5c01d7dd556867b6fb"},
+    {"path": "models/string_5_81_flux_fterm_tail_persistence.py", "sha256": "6d3e9d56d55a8d41bf042c6345d37cbb1afe3eb56bab22fff7cfe369b89b3d20"},
+    {"path": "research/cytools/string_5_81_flux_root_krawczyk.py", "sha256": "68c06d77ef4eeffcc4c158b9969728eba70d08ac0f5d8bf44c013f6f585528de"},
+    {"path": "research/cytools/string_5_81_complete_intersection_curve_match.py", "sha256": "a0577e5d5c71936ed1b1f31abe7f5f14b53609ff921dd67ca11c93fc863fa2c8"},
+    {"path": "results/2026-08-12_string_5_81_gkz_finite_sector_coverage.json", "sha256": "004afc95bde6217ba04ccafa172f830bfe57f00277830d39b5b100abdc0186ff"},
+    {"path": "results/2026-08-12_string_5_81_gkz_full_finite_root_center.json", "sha256": "09d72af2d814e216ae32db18d96fce148ad91f0d4ac133a87f65c906dc567891"},
+    {"path": "results/2026-08-12_string_5_81_gkz_full_finite_krawczyk.json", "sha256": "a99d2f5038ec3f7c3631fcf8a95999a324d01b7ba58dc6006d8f0f8b94c749d5"},
+    {"path": "results/2026-08-12_string_5_81_gkz_recentered_tail_propagation.json", "sha256": "e70885092f162995b4457484b88b51322c5964d02f5b64ba2ed9beb71bb4ce21"},
+    {"path": "models/string_5_81_gkz_finite_sector_coverage.py", "sha256": "b0b28cb0669450b642054bb4da0a9520ed75885aef8770fbee72b712a7772b83"},
+    {"path": "models/string_5_81_gkz_full_finite_root_center.py", "sha256": "864418f47307461e72e8de49257b7f418938f861350f1d339650da26a279d146"},
+    {"path": "research/cytools/string_5_81_gkz_full_finite_krawczyk.py", "sha256": "390c0f50ecc3ad0b9fac17cc19aa679ba348de887b394fc573b63a5841ca7104"},
+    {"path": "models/string_5_81_gkz_recentered_tail_propagation.py", "sha256": "c43920f1ef1f2647582dfa64a34267c440e9a11757d1455535b4af15d64f3684"}
+  ]
+}

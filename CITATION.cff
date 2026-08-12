@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite the article and archived release."
+title: "An all-orders interval certificate for a Calabi--Yau flux subsystem"
+type: software
+version: 0.1.0
+date-released: 2026-08-12
+authors:
+  - family-names: Agafonov
+    given-names: Evgeniy
+    affiliation: "Independent Researcher, Sochi, Russia"
+    email: my@eagafonov.ru
+    orcid: "https://orcid.org/0009-0005-9059-5291"
+repository-code: "https://github.com/megazord78-pixel/interval-flux-vacuum-5-81"
+license: BSD-3-Clause

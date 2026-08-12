@@ -1,0 +1,305 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\title{A Computer-Assisted All-Orders Certificate for a Six-Field
+Flux Subsystem on a Calabi--Yau Threefold}
+\author{Evgeniy Agafonov\\
+\small Independent Researcher, Sochi, Russia\\
+\small \href{mailto:my@eagafonov.ru}{my@eagafonov.ru}\\
+\small ORCID: \href{https://orcid.org/0009-0005-9059-5291}{0009-0005-9059-5291}}
+\date{Draft of 12 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop a computer-assisted framework for proving existence and local
+uniqueness of a supersymmetric flux-sector root on an explicit toric
+Calabi--Yau threefold with $h^{2,1}=5$ and $h^{1,1}=81$.  The system contains
+the axiodilaton and five complex-structure fields.  A real $12\times12$
+Krawczyk operator certifies a root of a finite instanton system, while exact
+Chow arithmetic and geometric-series majorants control the omitted GKZ
+degrees through periods, F-terms, and their Jacobian.  The finite 557-degree
+source sector is included in a recentered Arb evaluator with a box-wide
+interval enclosure, and an independent verifier checks the complete degree
+partition and the finite-plus-infinite Krawczyk inclusion. Five light quotient classes are identified
+as persistent rigid rational complete-intersection curves, as a supporting
+geometric result rather than part of the central proof.
+\end{abstract}
+
+\section{Context and contribution}
+
+Algorithmic algebraic geometry and numerical homotopy continuation have long
+been used to locate and enumerate flux vacua
+\cite{Gray2006,Mehta2011,MartinezPedrera2013}. More recent work has made
+large-modulus mirror symmetry computationally effective even for Calabi--Yau
+threefolds with many moduli \cite{Demirtas2024}, while interval Krawczyk
+operators provide practical certificates for isolated numerical solutions
+\cite{Breiding2024}. The explicit geometry and flux choice used here descend
+from the ancillary data of \cite{Demirtas2021}. Exact flux landscapes can
+also arise on special symmetry loci \cite{Grimm2024}. Recent analyses stress
+that instanton corrections can change the location and even the multiplicity
+of flux solutions near large-complex-structure boundaries
+\cite{Chauhan2026}.
+
+The contribution of this paper is to join these ingredients into one
+end-to-end certificate. Every degree is assigned either to an exact finite
+Chow computation or to an analytic infinite-tail majorant; the resulting
+period bounds are propagated through the mirror map, the six F-terms, their
+real Jacobian, and the final Krawczyk operator. To our knowledge, the cited
+flux-vacuum literature does not provide this combination of an explicit
+multi-parameter compact Calabi--Yau model, all-orders GKZ accounting, and an
+interval proof of local uniqueness. This is a deliberately narrower claim
+than a proof of a complete physical vacuum.
+
+\section{Claim and scope}
+
+Let $F:\mathbb R^{12}\rightarrow\mathbb R^{12}$ be the real form of the six
+complex equations $D_IW=0$, with $I$ running over the axiodilaton and five
+complex-structure moduli.  The intended result is strictly local.
+
+\begin{theorem}[Certified six-field local theorem]\label{thm:target}
+For the flux and basis data specified in the archived artifact, the complete
+closed-sector GKZ system has exactly one zero in the declared componentwise
+box of radius $10^{-30}$ around the archived center.
+\end{theorem}
+
+The theorem does not claim global uniqueness, simultaneous stabilization of
+the 81 K\"ahler moduli or open-string fields, uplifted stability, or a complete
+physical vacuum.
+
+\input{generated_certificate_table}
+
+\section{Model and equations}
+
+The compactification is the toric hypersurface dataset \texttt{5-81-3213} of
+\cite{Demirtas2021}, with $(h^{2,1},h^{1,1})=(5,81)$. We use the primitive
+integral divisor basis
+\begin{equation}
+ (J_1,J_2,J_3,J_4,J_5)=(D_2,D_3,D_4,D_5,D_9),
+ \qquad \int_X c_2(X)\wedge J_a=(16,8,12,20,8)_a.
+\end{equation}
+The independent Chow reconstruction has full column rank over $\mathbb Q$;
+the alternative compatible divisor tuple is related to the displayed one by
+a unimodular matrix. In the displayed basis, the nonzero symmetric triple
+intersections are
+\begin{align}
+&(\kappa_{111},\kappa_{112},\kappa_{114},\kappa_{122},
+  \kappa_{124},\kappa_{134},\kappa_{144},\kappa_{222})
+ =(-2,2,-2,-2,2,2,-2,2),\\
+&(\kappa_{224},\kappa_{244},\kappa_{334},\kappa_{344},
+  \kappa_{444},\kappa_{445},\kappa_{455},\kappa_{555})
+ =(-2,2,-2,2,-4,2,-2,2).
+\end{align}
+
+Let $\Phi=(\tau,z^1,\ldots,z^5)$, where $\tau$ is the axiodilaton and the
+$z^a$ are complex-structure coordinates. The integral flux vectors, in the
+archived symplectic ordering, are
+\begin{align}
+ f&=(-2,4,-10,-2,3,-3,0,3,-5,2,-2,-5),\\
+ h&=(0,-5,5,-4,-1,5,0,0,0,0,0,0).
+\end{align}
+Writing $f=(f_B,f_A)$ and $h=(h_B,h_A)$ in two six-component blocks and
+$\Pi=(X^I,F_I)$ with $X^0=1$ and $X^a=z^a$, our convention is
+\begin{equation}
+ W=\sqrt{\frac{2}{\pi}}\left[(f_B-\tau h_B)^T X
+ -(f_A-\tau h_A)^T F\right],\qquad \mathcal F_I=D_IW.
+\end{equation}
+The real system is ordered as
+\begin{equation}
+ x=(\operatorname{Re}\tau,\operatorname{Re}z^1,\ldots,
+ \operatorname{Re}z^5,\operatorname{Im}\tau,
+ \operatorname{Im}z^1,\ldots,\operatorname{Im}z^5).
+\end{equation}
+Its recentered witness begins
+\begin{align}
+x_0\simeq(&-12,-19.5,-29.5,-15,-15,-5;\nonumber\\
+          &19.81991494,32.20736178,48.72395756,
+          24.77489367,24.77489367,8.258297891),
+\end{align}
+with the full decimal center serialized in the certificate.
+
+In the large-complex-structure chart the genus-zero prepotential is written
+as
+\begin{equation}
+ \mathcal G(z)=-\frac16\kappa_{abc}z^az^bz^c
+ +\frac12 A_{ab}z^az^b+\frac1{24}c_{2,a}z^a
+ +\frac{\chi\,\zeta(3)}{2(2\pi i)^3}
+ -\frac1{(2\pi i)^3}\sum_{\beta>0}n^{(0)}_\beta
+   \operatorname{Li}_3(e^{2\pi i\beta\cdot z}),
+\end{equation}
+where $\chi=-152$, and $A_{ab}$ is the integral quadratic convention fixed
+by the archived symplectic basis. The period blocks used above are
+$X=(1,z^a)$ and $F=(2\mathcal G-z^a\mathcal G_a,\mathcal G_a)$.
+
+\section{Finite-system interval certificate}
+
+For a center $x_0$, interval box $X=x_0+[-r,r]^{12}$, and numerical inverse
+witness $C$, define
+\begin{equation}
+ K(X)=x_0-CF(x_0)+(I-CJ(X))(X-x_0).
+\end{equation}
+The Arb calculation reports the conservative scalar bounds
+\begin{align}
+ r &=10^{-30}, &
+ \lVert CF(x_0)\rVert_\infty &<3.73\times10^{-69},\\
+ \lVert I-CJ(X)\rVert_\infty &<7.58\times10^{-4}.
+\end{align}
+Consequently the finite-system image radius is bounded by
+\begin{equation}
+ 3.73\times10^{-69}+7.58\times10^{-4}r<r.
+\end{equation}
+This proves existence and local uniqueness for the implemented finite system.
+The attachment also contains all twelve componentwise inclusions; the scalar
+relaxation and the exact proof summary are reported in
+Table~\ref{tab:certificate}.
+
+\section{GKZ degree decomposition}
+
+The secondary-cone monoid is decomposed into a zero-action direction and five
+positive-action Hilbert generators.  Through transverse total eight, 8150
+representations are classified as shown in Table~\ref{tab:partition}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lr}
+\toprule
+Category & Representations\\
+\midrule
+Chow zero & 7150\\
+Finite source table & 527\\
+Displayed primitive multicover & 21\\
+Uncovered nonzero Chow sector & 452\\
+\midrule
+Total & 8150\\
+\bottomrule
+\end{tabular}
+\caption{Low-total degree ledger. The artifact contains the explicit disjoint
+membership lists and their canonical digest.}\label{tab:partition}
+\end{table}
+
+The 452 representations reduce to 188 distinct nonzero Chow charges.  Exact
+rational coefficient norms are used for this low sector.  All totals at least
+nine enter a geometric majorant, whose action is bounded below by
+$66.8922\ldots$.  The resulting uncovered-sector bound on a second logarithmic
+period derivative is $1.743\times10^{-77}$.
+
+\section{The finite-source-sector admission lemma}
+
+\begin{proposition}[Certified finite-sector lemma]\label{lem:finite}
+On a declared complex neighborhood containing the final Krawczyk box, the
+difference between the complete 557-degree Chow-reduced period jet and the
+finite baseline used in the interval solve has rigorous componentwise bounds
+through derivative order two.  Those bounds are propagated through the
+mirror map, symplectic periods, F-terms, and real Jacobian.
+\end{proposition}
+
+The full finite system shifts the original four-term center by approximately
+$2.93\times10^{-20}$, so the old radius-$10^{-30}$ box is not retained. The
+complete finite sector is instead included in the Arb evaluator and certified
+in a new radius-$10^{-30}$ box around the recentered root. The inverse mirror
+map is simultaneously certified by a five-component contraction argument.
+
+\section{Certified all-orders perturbation}
+
+For the already covered complement of the finite source sector, propagation
+gives
+\begin{align}
+ \lVert\Delta F\rVert_\infty &<8.543\times10^{-77},\\
+ \lVert\Delta J\rVert_\infty &<2.810\times10^{-73},\\
+ \max_i \rho_i &<1.082\times10^{-53}.
+\end{align}
+Here the final verifier computes, using rational arithmetic,
+\begin{equation}
+ \rho_i=\sum_{j=1}^{12}|C_{{\rm new},ij}|
+       \bigl(\Delta F_j+r\Delta J_j\bigr).
+\end{equation}
+All 144 upper bounds for $|C_{{\rm new},ij}|$ are serialized, and their exact
+row sums give $\lVert C_{\rm new}\rVert_\infty<1.447\times10^{23}$.
+Together with Proposition~\ref{lem:finite} and the exhaustive membership
+ledger, these inequalities give the stated all-orders six-field theorem.
+
+\begin{proof}[Proof of Theorem~\ref{thm:target}]
+Let $X=x_0+[-r,r]^{12}$. The Arb witness encloses the complete finite
+557-row system and its Jacobian on $X$, including the inverse mirror map, and
+gives
+\begin{equation}
+ \lVert C F_{\rm fin}(x_0)\rVert_\infty
+ +\lVert I-CJ_{\rm fin}(X)\rVert_\infty r
+ \le 7.574\times10^{-34}.
+\end{equation}
+The explicit low-total ledger and the high-total geometric majorant exhaust
+the complementary GKZ degrees. Their value and derivative bounds hold on the
+radius-$0.1$ logarithmic domain, which contains $X$ after recentering. Exact
+propagation through $C_{\rm new}$ adds at most
+$1.082\times10^{-53}$ to each real component of the Krawczyk image. Hence
+\begin{equation}
+ K_{\rm full}(X)\subset\operatorname{int}X
+\end{equation}
+in all twelve components. The Krawczyk theorem therefore gives a zero of the
+full closed-sector map in $X$ and uniqueness within the declared box.
+\end{proof}
+
+\section{Five supporting rigid curves}
+
+Five minimum-volume quotient-basis classes have unique representatives among
+the 3570 pairs of prime toric divisors:
+\begin{equation}
+ D_{15}D_{24}X,\quad D_{13}D_{84}X,\quad D_9D_{81}X,\quad
+ D_{10}D_{80}X,\quad D_{13}D_{82}X.
+\end{equation}
+For each representative, exact intersection data and face combinatorics give
+a primitive genus-zero class with normal bundle
+$\mathcal O_{\mathbb P^1}(-1)\oplus\mathcal O_{\mathbb P^1}(-1)$.  The
+restricted hypersurface equation is a primitive binomial whose coefficients
+remain nonzero in the all-orders logarithmic coefficient box, so the curves
+persist there. The interpretation of these classes follows the toric
+complete-intersection analysis of \cite{Demirtas2024}.
+
+This statement is intentionally not exhaustive.  The complete-intersection
+audit contains 54 non-potent divisor-pair records representing 52 distinct
+full classes.  The five curves support the geometric interpretation of the
+selected quotient basis but do not prove an all-orders GV vanishing theorem.
+
+\section{Reproducibility and trusted base}
+
+The release contains a small Python verifier with no third-party dependency.
+It recomputes strict scalar and componentwise inclusion inequalities, checks
+scope constraints, authenticates upstream artifacts by SHA-256, and fails if
+the finite-sector or degree-partition witnesses are absent.  The heavy
+generators use Arb, exact rational Chow arithmetic, Normaliz, and CYTools.
+Approximate roots and preconditioners are witnesses; interval inclusion is the
+proof.
+
+Negative tests alter preconditioner entries, tail bounds, one radius, one
+category count, the local-uniqueness scope, and the geometric exhaustion
+flag.  Each alteration must invalidate the certificate.  A separate
+dependency-free verifier recomputes the twelve tail contributions and the
+final inclusion inequality using exact rational arithmetic.
+
+The table included in the manuscript is generated directly from
+\texttt{data/certificate.json} and
+\texttt{data/recentered\_tail\_propagation.json}. It is therefore a build
+artifact rather than a second manually maintained statement of the numerical
+claim.
+
+\section{Discussion}
+
+Computer-assisted proofs can bridge the gap between formal instanton
+expansions and numerical flux vacua, but only when every series sector is
+accounted for by a disjoint and exhaustive certificate.  The present workflow
+provides a strict enclosure of the complete finite source sector, a sharp
+majorant for the uncovered infinite tail, and an exact componentwise
+propagation of that tail through the recentered preconditioner.  Their strict
+combined inclusion proves the stated local six-field theorem.  No claim about
+the full physical vacuum is made by this focused result.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
