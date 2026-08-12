@@ -1,5 +1,7 @@
 # Interval flux vacuum certificate on the `(h21,h11)=(5,81)` model
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21906027.svg)](https://doi.org/10.5281/zenodo.21906027)
+
 This is an isolated, fail-closed publication artifact for a proposed theorem:
 existence and local uniqueness of a root of the six-complex-field closed flux
 subsystem after inclusion of the complete GKZ series.
@@ -69,6 +71,6 @@ stabilisation, uplift, phenomenology, or a complete physical vacuum.
 
 ## Release metadata
 
-Code is offered under BSD-3-Clause. The author and repository metadata are
-recorded in `pyproject.toml` and `CITATION.cff`. A DOI will be added after the
-exact tagged release is archived in Zenodo.
+Code is offered under BSD-3-Clause. The exact `v1.0.1` release is archived by
+Zenodo at [10.5281/zenodo.21906027](https://doi.org/10.5281/zenodo.21906027).
+The concept DOI for all versions is `10.5281/zenodo.21906026`.

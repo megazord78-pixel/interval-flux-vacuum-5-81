@@ -24,8 +24,9 @@ and a rigorously propagated all-orders infinite tail. The manuscript carefully
 does not claim stabilization of the 81 Kähler moduli, open-string fields, a
 full 113-field root, or a complete physical vacuum.
 
-The code, exact data, certificate, and reproducibility instructions will be
-deposited in an immutable DOI-bearing archive before submission. This work is
+The code, exact data, certificate, and reproducibility instructions are
+deposited in the immutable Zenodo archive
+https://doi.org/10.5281/zenodo.21906027. This work is
 original, is not under consideration elsewhere, and has been approved by all
 authors.
 
@@ -42,6 +43,6 @@ ORCID: https://orcid.org/0009-0005-9059-5291
 
 ## Before use
 
-- Add the repository DOI and arXiv identifier.
+- Add the arXiv identifier after posting the preprint.
 - Confirm the journal’s current disclosure and data-availability forms.
 - Do not add “stable vacuum” or “first physical vacuum” to the letter.
