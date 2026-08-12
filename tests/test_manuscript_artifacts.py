@@ -24,6 +24,9 @@ class ManuscriptArtifactTests(unittest.TestCase):
         self.assertNotIn("Conditional all-orders", manuscript)
         self.assertNotIn("The remaining task is", manuscript)
         self.assertIn("\\input{generated_certificate_table}", manuscript)
+        self.assertIn("\\section*{Use of AI-assisted tools}", manuscript)
+        self.assertIn("independent last-mile checker", manuscript)
+        self.assertIn("not a\nsecond evaluation of the analytic system", manuscript)
 
     def test_every_citation_has_a_bibtex_entry(self):
         manuscript = (ROOT / "manuscript" / "main.tex").read_text(encoding="utf-8")

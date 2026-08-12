@@ -13,7 +13,7 @@ Flux Subsystem on a Calabi--Yau Threefold}
 \small Independent Researcher, Sochi, Russia\\
 \small \href{mailto:my@eagafonov.ru}{my@eagafonov.ru}\\
 \small ORCID: \href{https://orcid.org/0009-0005-9059-5291}{0009-0005-9059-5291}}
-\date{Draft of 12 August 2026}
+\date{12 August 2026}
 
 \begin{document}
 \maketitle
@@ -28,9 +28,9 @@ Chow arithmetic and geometric-series majorants control the omitted GKZ
 degrees through periods, F-terms, and their Jacobian.  The finite 557-degree
 source sector is included in a recentered Arb evaluator with a box-wide
 interval enclosure, and an independent verifier checks the complete degree
-partition and the finite-plus-infinite Krawczyk inclusion. Five light quotient classes are identified
-as persistent rigid rational complete-intersection curves, as a supporting
-geometric result rather than part of the central proof.
+partition and the finite-plus-infinite Krawczyk inclusion. Five light quotient
+classes are identified as persistent rigid rational complete-intersection
+curves, as a supporting geometric result rather than part of the central proof.
 \end{abstract}
 
 \section{Context and contribution}
@@ -52,11 +52,11 @@ The contribution of this paper is to join these ingredients into one
 end-to-end certificate. Every degree is assigned either to an exact finite
 Chow computation or to an analytic infinite-tail majorant; the resulting
 period bounds are propagated through the mirror map, the six F-terms, their
-real Jacobian, and the final Krawczyk operator. To our knowledge, the cited
-flux-vacuum literature does not provide this combination of an explicit
-multi-parameter compact Calabi--Yau model, all-orders GKZ accounting, and an
-interval proof of local uniqueness. This is a deliberately narrower claim
-than a proof of a complete physical vacuum.
+real Jacobian, and the final Krawczyk operator. The novelty claimed here is
+this combined certificate on an explicit multi-parameter compact
+Calabi--Yau model; no separate claim of priority is made for its individual
+algebraic, mirror-symmetry, or interval-arithmetic ingredients. This is a
+deliberately narrower result than a proof of a complete physical vacuum.
 
 \section{Claim and scope}
 
@@ -75,6 +75,35 @@ the 81 K\"ahler moduli or open-string fields, uplifted stability, or a complete
 physical vacuum.
 
 \input{generated_certificate_table}
+
+\section{Logical structure and proof inputs}
+
+The proof has two logically distinct layers.  The generator layer evaluates
+the analytic period and F-term formulae with Arb interval arithmetic, performs
+the exact Chow and monoid computations, and serializes outward-rounded
+witnesses.  The portable checker layer authenticates the three packaged proof
+attachments, recomputes the exact low-degree partition and canonical digests,
+recomputes the twelve rational tail propagations, and verifies the final
+strict Krawczyk inequalities.  It deliberately does not reimplement Arb,
+Normaliz, or CYTools.
+
+Accordingly, the trusted base consists of four explicit input classes:
+(i) the toric model, symplectic convention, flux vectors, and analytic period
+formulae stated below; (ii) exact Chow and monoid arithmetic for the finite
+degree ledger; (iii) the Arb enclosures for the mirror map, finite F-system,
+and real Jacobian on the declared boxes; and (iv) the elementary rational
+arithmetic of the portable checker.  Approximate centers and inverse matrices
+are only candidate witnesses.  They acquire mathematical force only through
+strict interval inclusion.  As in other computer-assisted proofs, the result
+also relies on the correct execution of the named arithmetic libraries and
+the underlying hardware; the release is not a formally verified
+implementation of those libraries.
+
+The archived hashes fix the exact witnesses used for the theorem.  The three
+packaged proof attachments are checked in every standalone run.  The further
+upstream provenance manifest contains 16 hashes and can be checked against an
+author snapshot with the optional \texttt{--source-root} mode; those upstream
+files are not silently counted as authenticated in the standalone mode.
 
 \section{Model and equations}
 
@@ -141,7 +170,7 @@ $X=(1,z^a)$ and $F=(2\mathcal G-z^a\mathcal G_a,\mathcal G_a)$.
 \section{Finite-system interval certificate}
 
 For a center $x_0$, interval box $X=x_0+[-r,r]^{12}$, and numerical inverse
-witness $C$, define
+witness $C$, define the Krawczyk operator \cite{Breiding2024,Moore2009}
 \begin{equation}
  K(X)=x_0-CF(x_0)+(I-CJ(X))(X-x_0).
 \end{equation}
@@ -159,6 +188,16 @@ This proves existence and local uniqueness for the implemented finite system.
 The attachment also contains all twelve componentwise inclusions; the scalar
 relaxation and the exact proof summary are reported in
 Table~\ref{tab:certificate}.
+
+The radius $10^{-30}$ is an exact certification scale, not a physical error
+bar and not an assumed accuracy of the root.  It was selected after a
+high-precision approximate solve and is admitted only because the subsequent
+box calculation proves strict inclusion.  This a posteriori choice does not
+enter as a hypothesis of the Krawczyk theorem.  No assertion is made that the
+same preconditioner certifies a substantially larger box.  In particular, the
+full finite sector moves the earlier four-term center by about
+$2.93\times10^{-20}$, so recentering is essential before the radius-$10^{-30}$
+statement can be made.
 
 \section{GKZ degree decomposition}
 
@@ -200,10 +239,8 @@ through derivative order two.  Those bounds are propagated through the
 mirror map, symplectic periods, F-terms, and real Jacobian.
 \end{proposition}
 
-The full finite system shifts the original four-term center by approximately
-$2.93\times10^{-20}$, so the old radius-$10^{-30}$ box is not retained. The
-complete finite sector is instead included in the Arb evaluator and certified
-in a new radius-$10^{-30}$ box around the recentered root. The inverse mirror
+The complete finite sector is included in the Arb evaluator and certified in
+the new radius-$10^{-30}$ box around the recentered root. The inverse mirror
 map is simultaneously certified by a five-component contraction argument.
 
 \section{Certified all-orders perturbation}
@@ -270,12 +307,13 @@ selected quotient basis but do not prove an all-orders GV vanishing theorem.
 \section{Reproducibility and trusted base}
 
 The release contains a small Python verifier with no third-party dependency.
-It recomputes strict scalar and componentwise inclusion inequalities, checks
-scope constraints, authenticates upstream artifacts by SHA-256, and fails if
-the finite-sector or degree-partition witnesses are absent.  The heavy
-generators use Arb, exact rational Chow arithmetic, Normaliz, and CYTools.
-Approximate roots and preconditioners are witnesses; interval inclusion is the
-proof.
+It authenticates the packaged proof attachments by SHA-256, recomputes strict
+scalar and componentwise inclusion inequalities, checks scope constraints,
+and fails if the finite-sector or degree-partition witnesses are absent.  The
+heavy generators use Arb, exact rational Chow arithmetic, Normaliz, and
+CYTools.  Their serialized interval enclosures remain part of the trusted
+input; the lightweight checker is an independent last-mile checker, not a
+second evaluation of the analytic system.
 
 Negative tests alter preconditioner entries, tail bounds, one radius, one
 category count, the local-uniqueness scope, and the geometric exhaustion
@@ -284,16 +322,29 @@ dependency-free verifier recomputes the twelve tail contributions and the
 final inclusion inequality using exact rational arithmetic.
 
 The table included in the manuscript is generated directly from
-\texttt{data/certificate.json} and
-\texttt{data/recentered\_tail\_propagation.json}. It is therefore a build
+\path{data/certificate.json} and
+\path{data/recentered_tail_propagation.json}. It is therefore a build
 artifact rather than a second manually maintained statement of the numerical
 claim.
 
 The exact public release used for this article is version v1.0.5, archived
-under the \href{https://doi.org/10.5281/zenodo.21906026}{Zenodo concept DOI}
-(accessed 12 August 2026); the source is maintained in the
+under the version DOI
+\href{https://doi.org/10.5281/zenodo.21906462}{10.5281/zenodo.21906462}.
+The concept DOI
+\href{https://doi.org/10.5281/zenodo.21906026}{10.5281/zenodo.21906026}
+resolves to the latest release; the source is maintained in the
 \href{https://github.com/megazord78-pixel/interval-flux-vacuum-5-81}
 {public GitHub repository}.
+
+\section*{Use of AI-assisted tools}
+
+OpenAI Codex was used for software-engineering assistance in isolating the
+portable verifier, constructing reproducibility and mutation tests, checking
+release packaging, and editing the English and presentation of the
+manuscript.  It was not treated as a source of mathematical or physical
+evidence.  The author selected the claims, inspected the code and generated
+artifacts, and accepts full responsibility for the scientific content and the
+submitted text.
 
 \section{Discussion}
 
