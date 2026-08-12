@@ -10,8 +10,8 @@ from fluxcert import (
 )
 
 
-ROOT = Path(__file__).resolve().parents[3]
-ARTIFACT = ROOT / "results/2026-08-12_string_5_81_gkz_finite_sector_coverage.json"
+ROOT = Path(__file__).resolve().parents[1]
+ARTIFACT = ROOT / "data" / "finite_sector_coverage.json"
 
 
 class RealFiniteCoverageTests(unittest.TestCase):
