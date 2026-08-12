@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "interval-flux-vacuum-5-81"
-version = "1.0.0"
+version = "1.0.1"
 description = "Independent verifier for an all-orders interval flux-root certificate"
 readme = "README.md"
 requires-python = ">=3.11"
