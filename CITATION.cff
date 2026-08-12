@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this artifact, please cite the article and archived release."
 title: "An all-orders interval certificate for a Calabi--Yau flux subsystem"
 type: software
-version: 1.0.3
+version: 1.0.4
 date-released: 2026-08-12
 authors:
   - family-names: Agafonov
