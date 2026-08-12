@@ -84,7 +84,7 @@ def main() -> None:
         "\\end{table}",
         "",
     ])
-    OUTPUT.write_text("\n".join(lines), encoding="utf-8")
+    OUTPUT.write_text("\n".join(lines), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
