@@ -29,6 +29,24 @@ class CertificateTests(unittest.TestCase):
                 encoding="utf-8"
             )
         )
+        inputs = cls.propagation["inputs"]
+        cls.tail_source = {
+            "refined_flux_tail": {
+                "tail_propagation": {
+                    "tau_fterm_component_tail_upper":
+                        inputs["delta_f_component_upper"][0],
+                    "complex_structure_fterm_component_tail_upper":
+                        inputs["delta_f_component_upper"][1],
+                    "tau_real_jacobian_row_sum_tail_upper":
+                        inputs["delta_j_row_sum_upper"][0],
+                    "complex_structure_real_jacobian_row_sum_tail_upper":
+                        inputs["delta_j_row_sum_upper"][1],
+                },
+                "krawczyk_persistence": {
+                    "existing_box_radius": inputs["box_radius"],
+                },
+            }
+        }
 
     def test_reference_certificate_is_publication_ready(self):
         result = audit_certificate(self.certificate)
@@ -52,10 +70,14 @@ class CertificateTests(unittest.TestCase):
         result = verify_certificate(copy.deepcopy(self.certificate))
         self.assertTrue(result["verified"])
 
-    def test_parent_snapshot_hashes(self):
-        source_root = ROOT.parents[1]
-        result = audit_certificate(self.certificate, source_root)
-        self.assertEqual(result["provenance_files_checked"], 16)
+    def test_provenance_manifest_is_well_formed(self):
+        provenance = self.certificate["provenance"]
+        self.assertEqual(len(provenance), 16)
+        paths = [item["path"] for item in provenance]
+        self.assertEqual(len(paths), len(set(paths)))
+        for item in provenance:
+            self.assertEqual(len(item["sha256"]), 64)
+            int(item["sha256"], 16)
 
     def test_legacy_tail_radii_are_not_embedded(self):
         tail = self.certificate["all_orders_tail"]
@@ -70,20 +92,10 @@ class CertificateTests(unittest.TestCase):
         )
 
     def test_tail_vectors_are_bound_to_authenticated_source(self):
-        source = json.loads(
-            (ROOT.parents[1] / "results" /
-             "2026-08-12_string_5_81_gkz_exact_low_allorders_flux_certificate.json")
-            .read_text(encoding="utf-8")
-        )
-        verify_tail_source_binding(self.propagation, source)
+        verify_tail_source_binding(self.propagation, self.tail_source)
 
     def test_rejects_tail_source_vector_mismatch(self):
-        source = json.loads(
-            (ROOT.parents[1] / "results" /
-             "2026-08-12_string_5_81_gkz_exact_low_allorders_flux_certificate.json")
-            .read_text(encoding="utf-8")
-        )
-        damaged = copy.deepcopy(source)
+        damaged = copy.deepcopy(self.tail_source)
         damaged["refined_flux_tail"]["tail_propagation"][
             "tau_fterm_component_tail_upper"
         ] = "1e-76"

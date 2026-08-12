@@ -1,17 +1,16 @@
 # Interval flux vacuum certificate on the `(h21,h11)=(5,81)` model
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21906027.svg)](https://doi.org/10.5281/zenodo.21906027)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21906026.svg)](https://doi.org/10.5281/zenodo.21906026)
 
-This is an isolated, fail-closed publication artifact for a proposed theorem:
-existence and local uniqueness of a root of the six-complex-field closed flux
-subsystem after inclusion of the complete GKZ series.
+This is an isolated, fail-closed publication artifact certifying existence and
+local uniqueness of a root of the six-complex-field closed flux subsystem after
+inclusion of the complete GKZ series.
 
 **Current status: verified for the declared six-field local theorem.** The
 finite 557-degree blocker is closed by the exact coverage ledger and a
 recentered full-finite Arb/Krawczyk witness. The checker certifies existence
 and local uniqueness after attaching the infinite GKZ tail. It does not claim
-a 113-field or physical vacuum theorem. See
-[`docs/CRITICAL_GAP.md`](docs/CRITICAL_GAP.md).
+a 113-field or physical vacuum theorem.
 
 ## What is isolated here
 
@@ -34,18 +33,20 @@ From this directory in PowerShell:
 
 ```powershell
 $env:PYTHONPATH = "src"
-python -m fluxcert --source-root ../..
+python -m fluxcert
 python -m unittest discover -s tests -v
 python scripts/render_certificate_table.py
 ```
 
 The strict verifier exits with status zero for the checked-in certificate.
 `--candidate-audit` remains available for diagnosing deliberately damaged or
-incomplete candidate witnesses.
+incomplete candidate witnesses. The optional `--source-root PATH` mode checks
+the provenance manifest against the author's immutable upstream snapshot; it
+is not required for verifying the self-contained published certificate.
 
-## Admitted scope after closure
+## Certified scope
 
-The strongest permissible theorem will be local and subsystem-specific:
+The admitted theorem is local and subsystem-specific:
 
 - six complex closed fields, equivalently twelve real equations;
 - one explicitly declared componentwise box;
@@ -66,11 +67,11 @@ stabilisation, uplift, phenomenology, or a complete physical vacuum.
   exactly recomputable rational tail additions;
 - `tests`: positive structural and negative mutation tests;
 - `manuscript`: focused article draft;
-- `docs/TRUST_MODEL.md`: trusted-base boundary;
-- `docs/PUBLICATION_PLAN.md`: actions required before submission.
+- `docs/CERTIFICATE_SCHEMA.md`: certificate fields and admission rules;
+- `docs/TRUST_MODEL.md`: trusted-base boundary.
 
 ## Release metadata
 
-Code is offered under BSD-3-Clause. The exact `v1.0.1` release is archived by
-Zenodo at [10.5281/zenodo.21906027](https://doi.org/10.5281/zenodo.21906027).
-The concept DOI for all versions is `10.5281/zenodo.21906026`.
+Code is offered under BSD-3-Clause. Releases are archived by Zenodo under the
+concept DOI [10.5281/zenodo.21906026](https://doi.org/10.5281/zenodo.21906026),
+which always resolves to the latest archived version.
